@@ -13,7 +13,7 @@ spring:
   application:
     name: payroll-master
   datasource:
-    url: jdbc:postgresql://localhost:5432/payroll
+    url: jdbc:postgresql://db:5432/payroll
     username: payroll
     password: payroll
     driver-class-name: org.postgresql.Driver
