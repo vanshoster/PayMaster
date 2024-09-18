@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: payroll
+      POSTGRES_USER: payroll
+      POSTGRES_DB: payroll
+      TZ: Europe/Moscow
+    ports:
+      - "5432:5432"
+
+  application:
+    image: payroll-master:latest
+    container_name: payroll-master
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "8081:8081"
+    environment:
+            JWT_KEY: "fsadljasdlgkioriue4iotuvatiovfkhd84hage948h4mecae4utocmtwevterg"
+            TZ: Europe/Moscow
+    depends_on:
+        - database
